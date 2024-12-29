@@ -51,7 +51,7 @@ long long generateUniqueId() {
         newId = (rand() % 9000000000LL) + 1000000000LL;  // Generate a 10-digit ID
         exists = 0;
 
-        FILE *file = fopen("accounts.csv", "w+");
+        FILE *file = fopen("accounts.csv", "r");
         if (file == NULL) {
             perror("Error opening file");
             break;  // If file doesn't exist, consider ID unique
