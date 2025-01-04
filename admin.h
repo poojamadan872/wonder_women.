@@ -17,8 +17,7 @@ typedef struct {
     char address[MAX_LENGTH];
     char email[MAX_LENGTH];
     char nationality[MAX_LENGTH];
-    char phoneNumber[10];
-
+    char phoneNumber[11]; // Adjust size to include null terminator
 } Account;
 
 
@@ -28,17 +27,24 @@ int writeToCSV(Account *account) {
     if (file == NULL) {
         perror("Error opening file");
         return 0;
-
     }
 
     // Write account details to the file in CSV format
-    fprintf(file, "%d,%s,%s,%s,%s,%s,%s\n", account->accountNumber,
+    fprintf(file, "%lld,%s,%s,%s,%s,%s,%s\n", account->accountNumber,
             account->fullName, account->gender, account->address,
             account->email, account->nationality, account->phoneNumber);
 
     fclose(file);
     return 1;
   }
+
+//function for removing all the newline character
+void removeNewline(char *str) {
+    size_t len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n') {
+        str[len - 1] = '\0';
+    }
+}
 
 // Function to generate a unique 10-digit ID
 long long generateUniqueId() {
