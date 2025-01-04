@@ -13,7 +13,7 @@ typedef struct {
 Customer customer;
 
 // Function to check login credentials
-void login(const char *acc_num, const char *password) 
+int login(const char *acc_num, const char *password) 
 {
     // Open the file and handle errors
     FILE *file = fopen("Acc_details.csv", "r");
@@ -43,7 +43,7 @@ void login(const char *acc_num, const char *password)
 
         // Check if the account exists and password matches
         if (strcmp(acc_num, stored_acc_num) == 0 && strcmp(password, stored_password) == 0) {
-                printf("Account already exists, try loging in...\n");
+                return 1;
             }
             
         }
