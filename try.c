@@ -9,6 +9,9 @@ void inputAccountData(Account *account) {
     account->accountNumber = generateUniqueId();
     printf("Your Account Number would be : %lld\n", account->accountNumber);
 
+    
+    // while (getchar() != '\n');
+
     printf("Enter Full Name: ");
     fgets(account->fullName, MAX_LENGTH, stdin);
     removeNewline(account->fullName);
@@ -16,6 +19,8 @@ void inputAccountData(Account *account) {
     printf("Enter Gender (M/F): ");
     fgets(account->gender, sizeof(account->gender), stdin);
     removeNewline(account->gender);
+
+    while (getchar() != '\n');
 
     printf("Enter Address: ");
     fgets(account->address, MAX_LENGTH, stdin);
