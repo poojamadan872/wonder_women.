@@ -22,10 +22,11 @@ typedef struct {
 
 
 //function to add account
-void writeToCSV(Account *account) {
+int writeToCSV(Account *account) {
     FILE *file = fopen("accounts.csv", "a");  // Open file in append mode
     if (file == NULL) {
         perror("Error opening file");
+        return 0;
     }
 
     // Write account details to the file in CSV format
@@ -34,7 +35,7 @@ void writeToCSV(Account *account) {
             account->email, account->nationality, account->phoneNumber);
 
     fclose(file);
-    printf("Account added successfully");
+    return 1;
   }
 
 //function for removing all the newline character
