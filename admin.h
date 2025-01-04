@@ -27,12 +27,8 @@ int writeToCSV(Account *account) {
     FILE *file = fopen("accounts.csv", "a");  // Open file in append mode
     if (file == NULL) {
         perror("Error opening file");
-<<<<<<< Updated upstream
-        return;
-        
-=======
         return 0;
->>>>>>> Stashed changes
+
     }
 
     // Write account details to the file in CSV format
